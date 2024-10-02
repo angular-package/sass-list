@@ -1,0 +1,20 @@
+// Sass.
+@use 'sass:list';
+
+// Completed
+// The `list.empty()` function returns the `bool` indicating whether the list is empty.
+// @param `$list` The list to check against its length.
+// @returns The returned value is a `bool` indicating whether the given `$list` is empty.
+@function empty($list) {
+  @return list.length($list) == 0;
+}
+
+// Alias name for `list.empty()`.
+@function is-empty($list) {
+  @return empty($list);
+}
+
+// Examples.
+// @debug empty(()); // true
+// @debug empty((1, )); // true
+// @debug empty((a: 1)); // false

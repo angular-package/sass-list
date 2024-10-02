@@ -1,0 +1,18 @@
+// Sass.
+@use "sass:list";
+
+// Completed
+// The `list.is-length()` function checks whether `$list` length is equal to `$length`.
+// @param `$list` The list to check it is of `$length`.
+// @returns The returned value is `bool` indicating whether `$list` length is equal to `$length`.
+@function is-length($list, $length) {
+  @return $length and list.length($list) == $length;
+}
+
+// Alias name.
+@function of-length($list, $length) {
+  @return is-length($list, $length);
+}
+
+// Examples.
+// @debug of-length((a, b, c), 4); // false

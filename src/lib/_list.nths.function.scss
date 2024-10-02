@@ -1,0 +1,24 @@
+// Sass.
+@use "sass:list";
+@use "sass:meta";
+
+// Completed
+// The `list.nths()` function returns elements of `$list` at `$n...` indexes.
+// @param `$list` A list from which elements of indexes `$n...` are retrieved.
+// @arbitrary `$n...` Multiple indexes of `$list`.
+// @returns The returned value is list of retrieved elements at `$n...` indexes.
+@function nths($list, $n...) {
+  @if not list.index(arglist list, meta.type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  $result: ();
+  @each $n in $n {
+    $result: list.append($result, list.nth($list, $n), comma);
+  }
+  @return $result;
+}
+
+// Examples.
+// @debug nths(('a', 'b', 'c', 'd', 'e', 'f'), 0); // Error: $n: List index may not be 0.
+// @debug nths(('a', 'b', 'c', 'd', 'e', 'f'), 4); // ("d",)
+// @debug nths(('a', 'b', 'c', 'd', 'e', 'f'), 4, 3, 4); // "d", "c", "d"
