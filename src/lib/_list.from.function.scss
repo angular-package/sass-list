@@ -1,0 +1,31 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'list.nths.function' as list-nths;
+
+// Completed
+// The `list.from()` function returns the list of elements from index `$from` to the end of `$list`.
+// @param `$list` The list from which the elements are picked.
+// @param `$from` A number-type element index of `$list`.
+// @returns The returned value is the list of elements from index `$from` to the last index of `$list`.
+@function from($list, $from) {
+  @if $from <= 0 { @return null; }
+  $nts: ();
+  @for $i from $from through list.length($list) {
+    $nts: $i <= list.length($list) and list.append($nts, $i) or $nts;
+  }
+  @return $from <= list.length($list) and
+    list-nths.nths($list, $nts...)
+    or null;
+}
+
+// Examples.
+// @debug from((('a', 'b', 'c'),), 1); // (('a', 'b', 'c'),)
+
+// @debug from((('a', 'b', 'c'), 'a', 'b', c, d, 2, 4, 5, (a: 1)), 0); // null
+// @debug from((('a', 'b', 'c'), 'a', 'b', c, d, 2, 4, 5, (a: 1)), -1); // null
+// @debug from((('a', 'b', 'c'), 'a', 'b', c, d, 2, 4, 5, (a: 1)), 1); // ("a", "b", "c"), "a", "b", c, d, 2, 4, 5, (a: 1)
+
+// @debug from(('a', 'b', c, d, 2, 4, 5, (a: 1)), 4); // d, 2, 4, 5, (a: 1)
+// @debug from(('a', 'b', c, d, 2, 4, 5, (a: 1)), 7); // 5, (a: 1)

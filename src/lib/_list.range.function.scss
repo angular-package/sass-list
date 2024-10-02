@@ -1,0 +1,56 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'list.nths.function' as list-nths;
+
+// Completed
+// The `list.range()` function returns the list from the `$list` of range `$from` to `$to`.
+// @param `$list` The list to retrieve the elements from the range `$from` to `$to`.
+// @param `$from` Index from which retrieving elements begins.
+// @param `$to` Index where the retrieval of elements ends.
+// @returns The returned value is the list of the given range.
+@function range($list, $from: 1, $to: list.length($list)) {
+  @if $from < 1 or $to < 1 or $to > list.length($list) { @return null; } 
+  $nts: ();
+  @for $i from $from through $to {
+    $nts: $i > 0 and list.append($nts, $i) or $nts;
+  }
+  @return list-nths.nths($list, $nts...);
+}
+
+// Examples.
+// from - to
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), 2, 4); // "b", "c", "d"
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), 2, -1); // null
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), -1, 1); // null
+
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), 4, 9); // Error: $n: Invalid index 7 for a list with 6 elements.
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), -1, -2); // null
+
+// from: number - to: string TODO: ?
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), -4); // "c", "d", "e", "f", "a", "b", "c", "d", "e", "f"
+
+// from: string to to: number
+// TODO: ?
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), length, -4); // "f", "e", "d", "c", "b", "a", "f", "e", "d", "c"
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), first, -4); // "a", "f", "e", "d", "c"
+// @debug range(('a', 'b', 'c', 'd', 'e', 'f'), start, -4); // "a", "f", "e", "d", "c"
+
+// search index TODO: ?
+// $-number: (1, '49 bold', 432, 313, 43, 132, 423, 89, 127, 2, 4, '213');
+// @debug range($-number, first '>' 400, any '==' 127); // 432, 313, 43, 132, 423, 89, 127
+// @debug range($-number, any '~=' '49', any '==' 127); // "49 bold", 432, 313, 43, 132, 423, 89, 127
+// @debug range($-number, any '>' 400, any ':==' string); // 432, "49 bold"
+
+// search index and adjust position TODO: ?
+// @debug range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), any '==' '.', 8); // ".", "e", ".", "f"
+// @debug range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, any '==' '.'); // "a", "b", "c", "d", "."
+// @debug range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, first '==' '.'); // "a", "b", "c", "d", "."
+// @debug range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), any '==' 'b', any '==' '.'); // "b", "c", "d", "."
+// @debug range(('a', 'bold king purple', 'c', 'd', '.', 'e', '.', 'f'), any '~=' 'bold king', any '==' '.'); // "bold king purple", "c", "d", "."
+
+// search index and adjust position TODO: ?
+// @debug range(('a', 'b', 'c', 'd', '.', 'e', '.', 'f'), 1, (any '==' '.') -1); // "a", "b", "c", "d"
+// @debug range(('a', 'bold king purple', 'c', 'd', '.', 'e', '.', 'f'), (any '~=' 'bold king') 1, any '==' '.'); // "c", "d", "."
+// @debug range(('a', 'b', (a: 1), 'c', 'd', '.', 'e', '.', 'f'), (first ':==' map) -1, (any '==' '.') -1); // "b", (a: 1), "c", "d"

@@ -1,0 +1,33 @@
+// Sass.
+@use 'sass:list';
+
+// Functions.
+@use 'list.nths.function' as list-nths;
+
+// Completed
+// The `list.to()` function returns `$list` with elements from the first index to the given `$to` index.
+// @param `$list` The list to get the elements from `1` to given `$to`.
+// @param `$to` Index of the last element to retrieve from `$list`.
+// @returns The returned value is the list of the elements from `1` to given `$to` index.
+@function to($list, $to) {
+  @if $to <= 0 or $to > list.length($list) { @return null; }
+  $nts: ();
+  @for $i from 1 through $to {
+    $nts: $i <= list.length($list) and list.append($nts, $i) or $nts;
+  }
+  @return list-nths.nths($list, $nts...);
+}
+
+// Examples.
+// $-list: ('a', 'b', c, d, 2, 4, 5, (a: 1));
+
+// @debug to(('a',), 1); // ("a",)
+// @debug to('&' '.' 'a' 'b' 'c', 2); // "&" "."
+
+// @debug to($-list, 1); // ("a",)
+// @debug to($-list, -1); // null
+
+// @debug to($-list, 4); // "a", "b", c, d
+// @debug to($-list, 7); // "a", "b", c, d, 2, 4, 5
+
+// @debug to($-list, 0); // null
