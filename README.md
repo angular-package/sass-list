@@ -242,7 +242,7 @@ list.select(
   $operator: '==',
   $value,
   $values...
-)
+) // TODO
 ```
 
 #### list.swap()
@@ -275,7 +275,7 @@ list.type($list, $n...)
 list.update($list, $nth-value...)
 ```
 
-#### list.get-[method]
+### list.get-[method]
 
 Get methods.
 
