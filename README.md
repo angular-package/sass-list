@@ -33,7 +33,7 @@ Sass List - Modified list Sass module.
 
 Extended sass modules:
 
-* The [`sass:list`](https://sass-lang.com/documentation/modules/list/) is extended by [`@angular-package/sass-list`](https://docs.angular-package.dev/v/sass/list/overview) - module lets you access and modify values in lists.
+* The [`sass:list`](https://sass-lang.com/documentation/modules/list/) is extended by [`@angular-package/sass-list`](https://docs.angular-package.dev/v/sass/list/overview) - module makes it easy to combine, search, or split apart strings.
 
 <br>
 
@@ -48,6 +48,7 @@ Sass extension is **free** to use. If you enjoy it, please consider donating via
 * [Skeleton](#skeleton)
 * [Code scaffolding](#code-scaffolding)
 * [Documentation](#documentation)
+  * [API](#api)
 * [Changelog](#changelog)
 * [Git](#git)
   * [Commit](#commit)
@@ -90,6 +91,102 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Documentation
 
 The documentation is in construction and it's available at [https://docs.angular-package.dev/v/sass-list](https://docs.angular-package.dev/v/sass-list/)
+
+### Api
+
+#### list.get-[method]
+
+#### list.get-bool()
+
+```scss
+list.get-bool($list, $occurrence: first)
+```
+
+#### list.get-list()
+
+```scss
+list.get-list($list, $occurrence: first)
+```
+
+#### list.get-map()
+
+```scss
+list.get-map($list, $occurrence: first)
+```
+
+#### list.get-number()
+
+```scss
+list.get-number($list, $occurrence: first)
+```
+
+#### list.get-string()
+
+```scss
+list.get-string($list, $occurrence: first)
+```
+
+#### list.get-type()
+
+```scss
+list.get-type($list, $occurrence: any, $type, $types...)
+```
+
+### list.remove-[method]
+
+#### list.remove-duplicate()
+
+```scss
+list.remove-duplicate($list, $values...)
+```
+
+#### list.remove-list()
+
+```scss
+list.remove-duplicate($list, $values...) // TODO
+```
+
+#### list.remove-map()
+
+```scss
+list.remove-map($list)
+```
+
+#### list.remove-nth()
+
+```scss
+list.remove-nth($list, $n, $nts...)
+```
+
+#### list.remove-number()
+
+```scss
+list.remove-number($list)
+```
+
+#### list.remove-range()
+
+```scss
+list.remove-range($list, $from: 1, $to: list.length($list)) // TODO
+```
+
+#### list.remove-string()
+
+```scss
+list.remove-string($list)
+```
+
+#### list.remove-type()
+
+```scss
+list.remove-type($list, $type, $types...)
+```
+
+#### list.remove-value()
+
+```scss
+list.remove-value($list, $value, $values...)
+```
 
 <br>
 
