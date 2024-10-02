@@ -1,0 +1,15 @@
+// Functions.
+@use "remove.type.function" as remove-type;
+
+// Completed
+// The `list.remove-number()` or `remove.number()` function returns the list without the number type elements.
+// @param `$list` The list from which the `number` type elements are being removed.
+// @returns The returned value is a copy of `$list` without elements of the `number` type.
+@function number($list) {
+  @return remove-type.type($list, number);
+}
+
+// Examples.
+// @debug number(( 1, 2, 3, 4)); // ()
+// @debug number(('a', 1, 2, 3, 'b', 4, 'c')); // "a", "b", "c"
+// @debug number(('a', 14, 'b', 13, 'c', 26, ('d', 'e', 'f'))); // "a", "b", "c", ("d", "e", "f")

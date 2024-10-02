@@ -1,0 +1,30 @@
+// Sass.
+@use "sass:list";
+
+// Completed
+// The `list.remove-value()` or `remove.value()` function returns the list without given values.
+// @param `$list` The list from which required `$value` and additional `$values` are being removed.
+// @param `$value` A required value to remove from `$list`.
+// @arbitrary `$values...` An additional values to remove from `$list`.
+// @returns The returned value is a copy of `$list` without required `$value` and additional `$values`.
+@function value($list, $value, $values...) {
+  $result: ();
+  $values: list.join(($value,), $values, comma);
+  @for $i from 1 through list.length($list) {
+    @if not list.index($values, list.nth($list, $i)) {
+      $result: list.append($result, list.nth($list, $i), list.separator($list));
+    }
+  }
+  @return $result;
+}
+
+// Examples.
+// string
+// @debug value(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', 'i', 'j', 'k'), h, g, a); // "b", "c", ("d", "e", "f"), "i", "j", "k"
+
+// list
+// @debug value(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', 'i', 'j', 'k'), ('d', 'e', 'f')); // "a" "b" "c" "g" "h" "i" "j" "k"
+// @debug value(('a', 'b', 'c', ('d', 'e', 'f'), 'g', 'h', 'i', 'j', 'k'), 'b', ('d', 'e', 'f')); // "a" "c" "g" "h" "i" "j" "k"
+
+// null
+// @debug value(('a', null, 'c', null, 'g', null, 'i', 'j', null), null); // "a", "c", "g", "i", "j"
