@@ -94,7 +94,190 @@ The documentation is in construction and it's available at [https://docs.angular
 
 ### Api
 
+#### list.add()
+
+```scss
+list.add($list, $separator: auto, $value, $values...)
+```
+
+#### list.append()
+
+```scss
+list.add($list, $separator: auto, $value, $values...)
+```
+
+#### list.each()
+
+```scss
+list.each($list, $comma: true, $index: 1)
+```
+
+#### list.empty()
+
+```scss
+list.empty($list)
+```
+
+#### list.extract-map()
+
+```scss
+list.extract-map($list, $occurrence: first)
+```
+
+#### list.first()
+
+```scss
+list.first($list)
+```
+
+#### list.flatten()
+
+```scss
+list.flatten($list)
+```
+
+#### list.from()
+
+```scss
+list.from($list, $from) // TODO
+```
+
+#### list.has()
+
+```scss
+list.has($list, $occurrence: any, $operator: '==', $value, $values...) // TODO
+```
+
+#### list.index()
+
+```scss
+list.index($list, $value, $values...)
+```
+
+#### list.insert-nth()
+
+```scss
+list.insert-nth($list, $n, $value)
+```
+
+#### list.invert()
+
+```scss
+list.invert($list)
+```
+
+#### list.is-length()
+
+```scss
+list.is-length($list, $length)
+```
+
+#### list.join()
+
+```scss
+list.join(
+  $list1,
+  $list2,
+  $separator: auto,
+  $bracketed: auto,
+  $delimiter: null
+)
+```
+
+#### list.last()
+
+```scss
+list.last($list)
+```
+
+#### list.limit()
+
+```scss
+list.limit($list, $limit...)
+```
+
+#### list.merge()
+
+```scss
+list.merge($list1, $list2)
+```
+
+#### list.nth()
+
+```scss
+list.nth($list, $n, $nts...)
+```
+
+#### list.nths()
+
+```scss
+list.nths($list, $n...)
+```
+
+#### list.of()
+
+```scss
+list.of($list, $spec, $separator: null, $type: false)
+```
+
+#### list.range()
+
+```scss
+list.range($list, $from: 1, $to: list.length($list))
+```
+
+#### list.replace()
+
+```scss
+list.replace($list, $replace, $replacement)
+```
+
+#### list.select()
+
+```scss
+list.select(
+  $select: index,
+  $from: null,
+  $operand: value,
+  $operator: '==',
+  $value,
+  $values...
+)
+```
+
+#### list.swap()
+
+```scss
+list.swap($list, $n, $to, $nth: list.nth($list, $n))
+```
+
+#### list.to-map()
+
+```scss
+list.to-map($list, $keys...)
+```
+
+#### list.to()
+
+```scss
+list.to($list, $to)
+```
+
+#### list.type()
+
+```scss
+list.type($list, $n...)
+```
+
+#### list.update()
+
+```scss
+list.update($list, $nth-value...)
+```
+
 #### list.get-[method]
+
+Get methods.
 
 #### list.get-bool()
 
@@ -133,6 +316,8 @@ list.get-type($list, $occurrence: any, $type, $types...)
 ```
 
 ### list.remove-[method]
+
+Remove methods.
 
 #### list.remove-duplicate()
 
