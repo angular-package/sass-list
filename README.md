@@ -94,49 +94,49 @@ The documentation is in construction and it's available at [https://docs.angular
 
 ### Api
 
-#### list.add()
+#### ```list.add()```
 
 ```scss
 list.add($list, $separator: auto, $value, $values...)
 ```
 
-#### list.append()
+#### ```list.append()```
 
 ```scss
 list.add($list, $separator: auto, $value, $values...)
 ```
 
-#### list.each()
+#### ```list.each()```
 
 ```scss
 list.each($list, $comma: true, $index: 1)
 ```
 
-#### list.empty()
+#### ```list.empty()```
 
 ```scss
 list.empty($list)
 ```
 
-#### list.extract-map()
+#### ```list.extract-map()```
 
 ```scss
 list.extract-map($list, $occurrence: first)
 ```
 
-#### list.first()
+#### ```list.first()```
 
 ```scss
 list.first($list)
 ```
 
-#### list.flatten()
+#### ```list.flatten()```
 
 ```scss
 list.flatten($list)
 ```
 
-#### list.from()
+#### ```list.from()```
 
 ![todo]
 
@@ -144,7 +144,7 @@ list.flatten($list)
 list.from($list, $from) // TODO
 ```
 
-#### list.has()
+#### ```list.has()```
 
 ![todo]
 
@@ -152,31 +152,31 @@ list.from($list, $from) // TODO
 list.has($list, $occurrence: any, $operator: '==', $value, $values...) // TODO
 ```
 
-#### list.index()
+#### ```list.index()```
 
 ```scss
 list.index($list, $value, $values...)
 ```
 
-#### list.insert-nth()
+#### ```list.insert-nth()```
 
 ```scss
 list.insert-nth($list, $n, $value)
 ```
 
-#### list.invert()
+#### ```list.invert()```
 
 ```scss
 list.invert($list)
 ```
 
-#### list.is-length()
+#### ```list.is-length()```
 
 ```scss
 list.is-length($list, $length)
 ```
 
-#### list.join()
+#### ```list.join()```
 
 ```scss
 list.join(
@@ -188,43 +188,43 @@ list.join(
 )
 ```
 
-#### list.last()
+#### ```list.last()```
 
 ```scss
 list.last($list)
 ```
 
-#### list.limit()
+#### ```list.limit()```
 
 ```scss
 list.limit($list, $limit...)
 ```
 
-#### list.merge()
+#### ```list.merge()```
 
 ```scss
 list.merge($list1, $list2)
 ```
 
-#### list.nth()
+#### ```list.nth()```
 
 ```scss
 list.nth($list, $n, $nts...)
 ```
 
-#### list.nths()
+#### ```list.nths()```
 
 ```scss
 list.nths($list, $n...)
 ```
 
-#### list.of()
+#### ```list.of()```
 
 ```scss
 list.of($list, $spec, $separator: null, $type: false)
 ```
 
-#### list.range()
+#### ```list.range()```
 
 ![todo]
 
@@ -232,13 +232,13 @@ list.of($list, $spec, $separator: null, $type: false)
 list.range($list, $from: 1, $to: list.length($list))
 ```
 
-#### list.replace()
+#### ```list.replace()```
 
 ```scss
 list.replace($list, $replace, $replacement)
 ```
 
-#### list.select()
+#### ```list.select()```
 
 ![todo]
 
@@ -253,13 +253,13 @@ list.select(
 ) // TODO
 ```
 
-#### list.swap()
+#### ```list.swap()```
 
 ```scss
 list.swap($list, $n, $to, $nth: list.nth($list, $n))
 ```
 
-#### list.to-map()
+#### ```list.to-map()```
 
 ![todo]
 
@@ -267,7 +267,7 @@ list.swap($list, $n, $to, $nth: list.nth($list, $n))
 list.to-map($list, $keys...)
 ```
 
-#### list.to()
+#### ```list.to()```
 
 ![todo]
 
@@ -275,111 +275,111 @@ list.to-map($list, $keys...)
 list.to($list, $to)
 ```
 
-#### list.type()
+#### ```list.type()```
 
 ```scss
 list.type($list, $n...)
 ```
 
-#### list.update()
+#### ```list.update()```
 
 ```scss
 list.update($list, $nth-value...)
 ```
 
-### list.get-[method]
+### ```list.get-[method]```
 
 Get methods.
 
-#### list.get-bool()
+#### ```list.get-bool()```
 
 ```scss
 list.get-bool($list, $occurrence: first)
 ```
 
-#### list.get-list()
+#### ```list.get-list()```
 
 ```scss
 list.get-list($list, $occurrence: first)
 ```
 
-#### list.get-map()
+#### ```list.get-map()```
 
 ```scss
 list.get-map($list, $occurrence: first)
 ```
 
-#### list.get-number()
+#### ```list.get-number()```
 
 ```scss
 list.get-number($list, $occurrence: first)
 ```
 
-#### list.get-string()
+#### ```list.get-string()```
 
 ```scss
 list.get-string($list, $occurrence: first)
 ```
 
-#### list.get-type()
+#### ```list.get-type()```
 
 ```scss
 list.get-type($list, $occurrence: any, $type, $types...)
 ```
 
-### list.remove-[method]
+### ```list.remove-[method]```
 
 Remove methods.
 
-#### list.remove-duplicate()
+#### ```list.remove-duplicate()```
 
 ```scss
 list.remove-duplicate($list, $values...)
 ```
 
-#### list.remove-list()
+#### ```list.remove-list()```
 
 ```scss
 list.remove-duplicate($list, $values...) // TODO
 ```
 
-#### list.remove-map()
+#### ```list.remove-map()```
 
 ```scss
 list.remove-map($list)
 ```
 
-#### list.remove-nth()
+#### ```list.remove-nth()```
 
 ```scss
 list.remove-nth($list, $n, $nts...)
 ```
 
-#### list.remove-number()
+#### ```list.remove-number()```
 
 ```scss
 list.remove-number($list)
 ```
 
-#### list.remove-range()
+#### ```list.remove-range()```
 
 ```scss
 list.remove-range($list, $from: 1, $to: list.length($list)) // TODO
 ```
 
-#### list.remove-string()
+#### ```list.remove-string()```
 
 ```scss
 list.remove-string($list)
 ```
 
-#### list.remove-type()
+#### ```list.remove-type()```
 
 ```scss
 list.remove-type($list, $type, $types...)
 ```
 
-#### list.remove-value()
+#### ```list.remove-value()```
 
 ```scss
 list.remove-value($list, $value, $values...)
