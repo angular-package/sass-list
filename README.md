@@ -329,6 +329,8 @@ list.get-string($list, $occurrence: first)
 list.get-type($list, $occurrence: any, $type, $types...)
 ```
 
+<br>
+
 ### ```list.remove-[method]```
 
 Remove methods.
