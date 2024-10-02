@@ -3,5 +3,10 @@
   "dest": "../../dist/sass-list",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "assets": [
+    "./src/lib/**/*.scss",
+    "*.scss"
+  ],
+  "keepLifecycleScripts": true
 }
