@@ -10,13 +10,11 @@
     "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
+    "sass": "^1.78.0",
     "stylelint": "^15.10.3",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^11.0.0",
     "stylelint-order": "^6.0.3"
-  },
-  "peerDependencies": {
-    "sass": "^1.78.0"
   },
   "scripts": {
     "prepublishOnly": "npm install rimraf && npm run pkg && npm run clean",
