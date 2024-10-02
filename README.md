@@ -138,11 +138,15 @@ list.flatten($list)
 
 #### list.from()
 
+![todo]
+
 ```scss
 list.from($list, $from) // TODO
 ```
 
 #### list.has()
+
+![todo]
 
 ```scss
 list.has($list, $occurrence: any, $operator: '==', $value, $values...) // TODO
@@ -222,6 +226,8 @@ list.of($list, $spec, $separator: null, $type: false)
 
 #### list.range()
 
+![todo]
+
 ```scss
 list.range($list, $from: 1, $to: list.length($list))
 ```
@@ -233,6 +239,8 @@ list.replace($list, $replace, $replacement)
 ```
 
 #### list.select()
+
+![todo]
 
 ```scss
 list.select(
@@ -253,11 +261,15 @@ list.swap($list, $n, $to, $nth: list.nth($list, $n))
 
 #### list.to-map()
 
+![todo]
+
 ```scss
 list.to-map($list, $keys...)
 ```
 
 #### list.to()
+
+![todo]
 
 ```scss
 list.to($list, $to)
@@ -430,6 +442,7 @@ MIT © angular-package ([license][sass-list-license])
 [fix]: https://img.shields.io/badge/-Fix-red
 [new]: https://img.shields.io/badge/-eNw-green
 [update]: https://img.shields.io/badge/-Update-red
+[todo]: https://img.shields.io/badge/-Todo-silver
 [documentation]: https://img.shields.io/badge/-Documentation-informational
 [demonstration]: https://img.shields.io/badge/-Demonstration-green
 
