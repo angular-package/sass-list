@@ -229,7 +229,7 @@ list.of($list, $spec, $separator: null, $type: false)
 ![todo]
 
 ```scss
-list.range($list, $from: 1, $to: list.length($list))
+list.range($list, $from: 1, $to: list.length($list)) // TODO
 ```
 
 #### ```list.replace()```
@@ -287,6 +287,8 @@ list.type($list, $n...)
 list.update($list, $nth-value...)
 ```
 
+<br>
+
 ### ```list.get-[method]```
 
 Get methods.
@@ -339,6 +341,8 @@ list.remove-duplicate($list, $values...)
 
 #### ```list.remove-list()```
 
+![todo]
+
 ```scss
 list.remove-duplicate($list, $values...) // TODO
 ```
@@ -362,6 +366,8 @@ list.remove-number($list)
 ```
 
 #### ```list.remove-range()```
+
+![todo]
 
 ```scss
 list.remove-range($list, $from: 1, $to: list.length($list)) // TODO
