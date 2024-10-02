@@ -1,0 +1,35 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:map';
+
+// Completed
+// The `list.get-type()` or `get.type()` function returns the list with any, first, last or all occurred elements of `$type` and optional `$types`.
+// @param `$list` The list from which occurred elements of required `$type` and optional `$types` are taken.
+// @param `$occurrence` Any, first, last or all occurrence of `$type` and optional `$types` in `$list`.
+// @param `$type` Required type to retrieve from `$list`.
+// @arbitrary `$types...` Additional types to retrieve from `$list`.
+// @returns The returned value is occurred any, first, last or all element or list of the elements of required `$type` and optional `$types`.
+@function type($list, $occurrence: any, $type, $types...) {
+  @if not list.index(arglist list, type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  $result: ();
+  @each $element in $list {
+    $result: list.index($type, type-of($element))
+      and list.append($result, $element, comma)
+      or $result;
+  }
+  $first: list.length($result) > 0 and list.nth($result, 1) or null;
+  $last: list.length($result) > 0 and list.nth($result, list.length($result)) or null;
+  @return map.get((
+    any: $first,
+    first: $first,
+    last: $last,
+    all: $result,
+  ), $occurrence);
+}
+
+// Examples.
+// @debug type(a 1 true, any, string); // a
+// @debug type(a 1 true, any, number); // 1
+// @debug type(a 1 true, any, bool); // true

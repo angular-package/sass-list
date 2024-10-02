@@ -1,0 +1,21 @@
+// Functions.
+@use 'get.type.function' as get-type;
+
+// Completed
+// The `get.bool()` function returns any, first, last bool, or all occurring bools.
+// @param `$list` The list from which the occurring bools are retrieved.
+// @param `$occurrence` Any, first, last occurring bool or all occurred bools in `$list`.
+// @returns The returned value is occurred any, first, last bool or all occurred bools retrieved from `$list` or `null`.
+@function bool($list, $occurrence: first) {
+  @return get-type.type($list, $occurrence, bool);
+}
+
+// Examples.
+// @debug bool(('a', 'b', false, 'c', 2)); // `false`
+// @debug bool(('a', 'b', true, 'c', 2)); // `true`
+// @debug bool(('a', 'b', 'c', (true, '5', (6,)))); // `null`
+// @debug bool(('a', 'b', true, 'c', 2), any); // `null`
+// @debug bool(('a', 'b', true, 'c', 2), first); // `true`
+// @debug bool(('a', 'b', false, 'c', 2, true), any); // `false`
+// @debug bool(('a', 'b', false, 'c', 2, true), last); // `true`
+// @debug bool(('a', 'b', false, 'c', 2, true), first); // `false`

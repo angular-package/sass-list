@@ -1,0 +1,31 @@
+// Functions.
+@use 'get.type.function' as get-type;
+
+// Completed
+// The `get.string()` function returns any, first, last string or all occurring strings, or all occurred strings.
+// @param `$list` A list from which the occurring strings are retrieved.
+// @param `$occurrence` All, any, first or last occurrence of retrieved strings from `$list`.
+// @returns The returned value is occurred any, first, last string or all occurred strings retrieved from `$list` or `null`.
+@function string($list, $occurrence: first) {
+  @return get-type.type($list, $occurrence, string);
+}
+
+// Examples.
+// occurrence: first by default
+// @debug string((1, 'a', 'b', 'c', 2)); // a
+// @debug string((1, 2, 3, 'a', 'b', 'c', 2), first); // a
+// @debug string(('a', 3, 'b', 2, 4, 8, 2, 7, 2, 'b', 'c', 2), first); // a
+
+// occurrence: any
+// @debug string((1, 2, 3, 'a', 'b', 'c', (3)), any); // a
+
+// occurrence: last
+// @debug string(('a', 5, 'b', 2, 'c', (4, )), last); // c
+// @debug string(('a', 3, 'b', 2, 4, 8, 2, 7, 2, 'b', 'c', 2), last); // c
+
+// occurrence: all
+// @debug string((3, 'a', 0, 'b', 1, 'c', 2), all); // "a", "b", "c"
+// @debug string(('a', 'the', 5, 'sun', 'b', 2, 'c', (4, )), all); // "a", "the", "sun", "b", "c"
+// @debug string(('a', 3, 'b', 2, 4, 8, 2, 7, 2, 'b', 'c', 2), all); // "a", "b", "b", "c"
+// @debug string(('a', 3, 'b', 2, 'c', 4, 2, 7, 2, 'b', 'c', 2), all); // "a", "b", "c", "b", "c"
+// @debug string(('a', 3, 'b', 2, 'c', 4, 'd', 8, 'e', 2, 7, 2, 'b', 'c', 2), all); // "a", "b", "c", "d", "e", "b", "c"

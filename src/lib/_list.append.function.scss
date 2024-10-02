@@ -1,0 +1,51 @@
+// Sass.
+@use 'sass:list';
+@use 'sass:meta';
+
+// Completed
+// The modified `list.append()` function returns a copy of `$list` with `$val` and/or with added multiple `$values`.
+// The function is modified by adding arbitrary values to the end of the parameters to preserve the original functionality.
+// @param `$list` The list to append the `$val` and/or `$values` into.
+// @param `$val` The value to append to the end of `$list`.
+// @param `$separator` The separator `comma`, `space` or `slash` of the list. Default `auto`.
+// @arbitrary `$values...` Additional values to append into `$list`.
+// @returns Returns a copy of `$list` with `$val` and/or `$values` added to the end.
+@function append($list, $val, $separator: auto, $values...) {
+  @if not list.index(arglist list, meta.type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  @return list.join(
+    $list,
+    list.join(($val,), $values, list.separator($list)),
+    $separator
+  );
+}
+
+// Examples.
+// $-list1: (30px, 10px);
+// $-list2: (50px, 40px);
+
+// @debug append(10px 20px, 30px); // 10px 20px 30px
+// @debug append((red, green), blue, space); // red green blue
+
+// @debug list.join(((10px 20px),), ((30px, 10px), (50px, 40px)), $separator: comma);
+// @debug append(((10px 20px),), (30px, 10px), comma, (50px, 40px));
+
+// @debug list.join(((10px 20px),), ($-list1, $-list2), $separator: comma);
+// @debug append(((10px 20px),), $-list1, comma, $-list2);
+
+// @debug list.join(((10px 20px),), ((30px, 10px),), comma);
+// @debug list.append(((10px 20px),), (30px, 10px), comma);
+
+// additional values
+// @debug append((blue, red), green, auto, blue, red); // blue, red, green, blue, red
+// @debug append(10px 20px, 30px 40px, auto, 1px, 15px); // 10px 20px (30px 40px) 1px 15px
+// @debug append(10px, 20px, auto, 1em, 2rem); // 10px 20px 1em 2rem
+// @debug append(10px 20px, 30px 40px, auto, 1px, 15px, (1px 2px 3px)); // 10px 20px (30px 40px) 1px 15px (1px 2px 3px)
+// @debug append((10px, 20px), 30px 40px, auto, 1px, 15px, (1px 2px 3px), (4px, 5px)); // 10px, 20px, 30px 40px, 1px, 15px, 1px 2px 3px, (4px, 5px)
+
+// append map
+// @debug append(1 2 3, (a: 1, b: 2, c: 3), auto, (d: 4, e: 5)); // 1 2 3 (a: 1, b: 2, c: 3) (d: 4, e: 5)
+// @debug append((a: 1, b: 2), (c: 3, d: 4), auto, (e: 5, f: 6)); // a 1, b 2, (c: 3, d: 4), (e: 5, f: 6)
+// @debug append(1 2 3, (a: 1, b: 2, c: 3), auto, (d: 4, e: 5), (4, 5, 6), (7, 8, 9)); // 1 2 3 (a: 1, b: 2, c: 3) (d: 4, e: 5) (4, 5, 6) (7, 8, 9)
+// @debug append(1 2 3, (a: 1, b: 2, c: 3), auto, (d: 4, e: 5), 4, 5, 6, 7, 8, 9); // 1 2 3 (a: 1, b: 2, c: 3) (d: 4, e: 5) 4 5 6 7 8 9

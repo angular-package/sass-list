@@ -1,0 +1,13 @@
+// Sass.
+@use 'sass:list';
+
+// Completed
+// The `list.last()` function returns the last element of `$list`.
+// @param `$list` The list to get the last element from.
+// @returns The returned value is the last element of `$list`.
+@function last($list) {
+  @return list.nth($list, list.length($list));
+}
+
+// Examples.
+// @debug last(('a', 'b', c, d, 2, 4, 5, (a: 1))); // (a: 1)

@@ -1,0 +1,38 @@
+// Sass.
+@use "sass:list";
+@use "sass:meta";
+
+// Completed
+// The `list.index()` function returns the index and/or indexes of the given `$values`.
+// @param `$list` The list from which indexes of the given values are retrieved.
+// @param `$value` The single value to find in the given list and return its index.
+// @arbitrary `$values...` Multiple values to find their indexes in the given list.
+// @returns The returned value is an index or list of indexes of the given values.
+@function index($list, $value, $values...) {
+  @if not list.index(arglist list, meta.type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  $result: ();
+  @each $value in list.join(($value,), $values, comma) {
+    $result: list.index($list, $value)
+      and list.append($result, list.index($list, $value), comma)
+      or $result;
+  }
+  @return list.length($result) > 0
+    and (list.length($result) == 1 and list.nth($result, 1) or $result)
+    or null;
+}
+
+// Examples.
+// @debug index(1px solid red, 1px); // 1
+// @debug index(1px solid red, solid); // 2
+// @debug index(1px solid red, dashed); // null
+
+// bool
+// @debug index(1px false solid red, false); // 2
+
+// null
+// @debug index(1px false solid null red, null); // 4
+
+// list
+// @debug index((1px solid) 'red' (12px, 14px) 'green', (1px solid), (12px, 14px)); // 1, 3

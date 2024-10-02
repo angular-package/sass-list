@@ -1,0 +1,14 @@
+// Sass.
+@use 'sass:list';
+
+// Completed
+// The `list.first()` function returns the first element of `$list`.
+// @param `$list` The list to get the first element from.
+// @returns The returned value is the first element of `$list`.
+@function first($list) {
+  @return list.nth($list, 1);
+}
+
+// Examples.
+// @debug first(('a', 'b', c, d, 2, 4, 5, (a: 1))); // a
+// @debug first(((a: 1), 'b', c, d, 2, 4, 5, (a: 1))); // (a: 1)
