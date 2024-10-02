@@ -1,0 +1,48 @@
+// Sass.
+@use "sass:list";
+@use "sass:meta";
+
+// Functions.
+@use "./replace.nth-string.function" as replace-nth-string;
+
+// Completed
+// The `list.replace-string()` function returns `$list` with replaced all substrings `$replace` by `$replacement`.
+// @param `$list` A list in which `$substring` in the elements of `string` type are replaced by `$replacement`.
+// @param `$occurrence` Occurrence all/first of `$substring` in `$list` all `string` type elements.
+// @param `$substring` A substring to replace with `$replacement` in the `$list` elements of the `string` type.
+// @param `$replacement` The `string` to replace `$substring` in the `string` type elements of `$list`.
+// @param `$unquote` Unquote replaced `$substring` if `true`.
+// @returns The returned value is `$list` where `$substring` of `string` type elements are replaced with `$replacement`.
+@function string(
+  $list,
+  $occurrence,
+  $substring,
+  $replacement,
+  $unquote: false
+) {
+  @if not list.index(arglist list, meta.type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  @if not list.index(all first, $occurrence) {
+    @error "$occurrence: #{$occurrence} is not all or first";
+  }
+  @for $i from 1 through list.length($list) {
+    @if meta.type-of(list.nth($list, $i)) == string { 
+      $list: replace-nth-string.nth-string(
+        $list,
+        $i,
+        $occurrence,
+        $substring,
+        $replacement,
+        $unquote
+      );
+    }
+  }
+  @return $list;
+}
+
+// Example usage
+// @debug string(('__PARENT__1123', 'aaaa__PARENT__1123', 'sdfsdfsd-dasdsad__PARENT__1123'), all, __PARENT__, '&'); // "&1123", "aaaa&1123", "sdfsdfsd-dasdsad&1123"
+// @debug string((test, test1, test2), all, test1, something); // test, something, test2
+// @debug string((test, 'test1 test2 test1', test2), first, test1, something); // test, "something test2 test1", test2
+// @debug string((test, 'test1 test2 test1', test2), all, test1, something); // test, "something test2 something", test2

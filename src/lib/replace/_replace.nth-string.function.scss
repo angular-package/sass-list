@@ -1,0 +1,65 @@
+// Sass.
+@use "sass:list";
+@use "sass:meta";
+@use "sass:string";
+
+// Completed
+// The `list.replace-nth-string()` function returns `$list` with replaced all substrings `$substring` by `$replacement` at index `$n`.
+// @param `$list` A list in which `$substring` in the elements of `string` type are replaced by `$replacement`.
+// @param `$n` Index of `$list` element in which `$substring` occurred all/any times is replaced by `$replacement`.
+// @param `$occurrence` Occurrence all/first of `$substring` in `$list` element at index `$n`.
+// @param `$substring` A substring to replace with `$replacement` in the `$list` elements of the `string` type.
+// @param `$replacement` The `string` to replace `$substring` in the `string` type elements of `$list`.
+// @param `$unquote` Unquote replaced `$substring` if `true`.
+// @returns The returned value is `$list` where `$substring` of `string` type elements are replaced with `$replacement`.
+@function nth-string(
+  $list,
+  $n,
+  $occurrence,
+  $substring,
+  $replacement,
+  $unquote: false
+) {
+  @if not list.index(arglist list, meta.type-of($list)) {
+    @error "$list: #{$list} is not arglist or list";
+  }
+  @if not list.index(all first, $occurrence) {
+    @error "$occurrence: #{$occurrence} is not all or first";
+  }
+  @if meta.type-of(list.nth($list, $n)) == string {
+    $string: list.nth($list, $n);
+    @each $value in $substring {
+      @if not (meta.type-of($value) == string) {
+        @error "$substring: #{$value} is not `string`";
+      }
+      $index: string.index($string, $value);
+      @while not ($index == null) {
+        $string: string.insert(
+          string.slice($string, 1, $index - 1) +
+            string.slice(
+              $string,
+              $index + string.length($value),
+              string.length($string)
+            ),
+          $replacement,
+          $index
+        );
+        @if $occurrence == first {
+          $index: null;
+        }
+        @if $occurrence == all or ($occurrence == first and not ($index == null)) {
+          $index: string.index($string, $value);
+        }
+      }
+    }
+    $list: list.set-nth($list, $n, $string);
+  }
+  @return $list;
+}
+
+
+
+// Example usage
+// @debug nth-string((test, test1, test2), 2, first, test1, something); // test, something, test2
+// @debug nth-string((test, 'test1 test2 test1', test2), 2, first, 'test1', something); // test, "something test2 test1", test2
+// @debug nth-string((test, 'test1 test2 test1', test2), 2, all, 'test1', something); // test, "something test2 something", test2
